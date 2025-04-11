@@ -1,100 +1,227 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Coin - تطبيق تعدين العملات الرقمية</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Coin</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #1e1e1e, #2c2c2c);
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }.container {
+  max-width: 800px;
+  padding: 20px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.logo {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin: 15px 0 30px;
+  color: #e0e0e0;
+}
+
+.start-button {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #ffd700, #ffb700);
+  color: #1e1e1e;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.start-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+}
+
+.start-button:active {
+  transform: translateY(1px);
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.feature-title {
+  font-size: 1.2rem;
+  color: #ffd700;
+  margin-bottom: 10px;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  background-color: rgba(255, 215, 0, 0.3);
+  border-radius: 50%;
+  animation: float 15s infinite linear;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .features {
+    flex-direction: column;
+  }
+  
+  .feature {
+    margin: 10px 0;
+  }
+}
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <img src="images/logo.png" alt="Smart Coin Logo">
-                <h1>Smart Coin</h1>
-            </div>
-            <div class="user-info">
-                <span id="username">مرحباً!</span>
-                <span id="account-age"></span>
-            </div>
-        </header>
+  <div class="particles" id="particles"></div>  <div class="container">
+    <div class="logo">🪙</div>
+    <h1>Smart Coin</h1>
+    <p class="tagline">المستقبل الذكي للعملات الرقمية</p><button class="start-button" onclick="location.href='main.html'">ابدأ الآن</button>
 
-        <main>
-            <section id="login-section" class="section">
-                <h2>تسجيل الدخول</h2>
-                <p>مرحباً بك في تطبيق Smart Coin! قم بتسجيل الدخول للبدء في تعدين العملات الرقمية والحصول على مكافآت USDT.</p>
-                <button id="login-button" class="primary-button">تسجيل الدخول باستخدام تيليجرام</button>
-            </section>
+<div class="features">
+  <div class="feature">
+    <div class="feature-icon">🔒</div>
+    <div class="feature-title">آمنة تماماً</div>
+    <p>تقنية بلوكتشين متطورة لحماية أصولك الرقمية</p>
+  </div>
+  
+  <div class="feature">
+    <div class="feature-icon">📈</div>
+    <div class="feature-title">نمو سريع</div>
+    <p>استثمر في مستقبل العملات الرقمية مع إمكانية نمو استثنائية</p>
+  </div>
+  
+  <div class="feature">
+    <div class="feature-icon">🌐</div>
+    <div class="feature-title">عالمية</div>
+    <p>تداول بحرية في أي مكان حول العالم بدون قيود</p>
+  </div>
+</div>
 
-            <section id="dashboard-section" class="section hidden">
-                <div class="balance-card">
-                    <h3>رصيدك الحالي</h3>
-                    <div class="balance">
-                        <span id="coin-balance">0</span>
-                        <span class="coin-symbol">🪙</span>
-                    </div>
-                    <div class="balance-details">
-                        <div class="detail">
-                            <span class="label">المستوى:</span>
-                            <span id="user-level">مبتدئ</span>
-                        </div>
-                        <div class="detail">
-                            <span class="label">معدل التعدين:</span>
-                            <span id="mining-rate">3 عملات/يوم</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="streak-card">
-                    <h3>التعدين المتتالي</h3>
-                    <div class="streak-progress">
-                        <div class="progress-bar">
-                            <div id="streak-progress-fill" style="width: 40%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="current-streak">3</span>/<span id="max-streak">7</span> أيام
-                        </div>
-                    </div>
-                    <p>استمر في التعدين يومياً للحصول على مكافآت إضافية!</p>
-                </div>
-
-                <div class="action-buttons">
-                    <button id="mine-button" class="primary-button">
-                        <span class="icon">⛏️</span>
-                        تعدين يومي
-                    </button>
-                    <button id="store-button" class="secondary-button">
-                        <span class="icon">🛒</span>
-                        متجر حزم التعدين
-                    </button>
-                    <button id="referral-button" class="secondary-button">
-                        <span class="icon">👥</span>
-                        دعوة الأصدقاء
-                    </button>
-                    <button id="tasks-button" class="secondary-button">
-                        <span class="icon">✅</span>
-                        المهام اليومية
-                    </button>
-                </div>
-
-                <div class="transactions">
-                    <h3>آخر المعاملات</h3>
-                    <div id="transactions-list" class="transactions-list">
-                        <!-- سيتم إضافة المعاملات هنا بواسطة JavaScript -->
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>Smart Coin &copy; 2025 - جميع الحقوق محفوظة</p>
-        </footer>
-    </div>
-
-    <script src="js/app.js"></script>
-</body>
+  </div>  <script>
+    // إنشاء جسيمات متحركة في الخلفية
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 20;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // حجم عشوائي
+        const size = Math.random() * 15 + 5;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // موقع عشوائي
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100 + 100;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        
+        // سرعة عشوائية
+        const duration = Math.random() * 20 + 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // تأخير عشوائي
+        const delay = Math.random() * 10;
+        particle.style.animationDelay = `${delay}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // تشغيل عند تحميل الصفحة
+    window.addEventListener('load', createParticles);
+  </script></body>
 </html>
