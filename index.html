@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Coin - تطبيق تعدين العملات الرقمية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="images/logo.png" alt="Smart Coin Logo">
+                <h1>Smart Coin</h1>
+            </div>
+            <div class="user-info">
+                <span id="username">مرحباً!</span>
+                <span id="account-age"></span>
+            </div>
+        </header>
+
+        <main>
+            <section id="login-section" class="section">
+                <h2>تسجيل الدخول</h2>
+                <p>مرحباً بك في تطبيق Smart Coin! قم بتسجيل الدخول للبدء في تعدين العملات الرقمية والحصول على مكافآت USDT.</p>
+                <button id="login-button" class="primary-button">تسجيل الدخول باستخدام تيليجرام</button>
+            </section>
+
+            <section id="dashboard-section" class="section hidden">
+                <div class="balance-card">
+                    <h3>رصيدك الحالي</h3>
+                    <div class="balance">
+                        <span id="coin-balance">0</span>
+                        <span class="coin-symbol">🪙</span>
+                    </div>
+                    <div class="balance-details">
+                        <div class="detail">
+                            <span class="label">المستوى:</span>
+                            <span id="user-level">مبتدئ</span>
+                        </div>
+                        <div class="detail">
+                            <span class="label">معدل التعدين:</span>
+                            <span id="mining-rate">3 عملات/يوم</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="streak-card">
+                    <h3>التعدين المتتالي</h3>
+                    <div class="streak-progress">
+                        <div class="progress-bar">
+                            <div id="streak-progress-fill" style="width: 40%;"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="current-streak">3</span>/<span id="max-streak">7</span> أيام
+                        </div>
+                    </div>
+                    <p>استمر في التعدين يومياً للحصول على مكافآت إضافية!</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="mine-button" class="primary-button">
+                        <span class="icon">⛏️</span>
+                        تعدين يومي
+                    </button>
+                    <button id="store-button" class="secondary-button">
+                        <span class="icon">🛒</span>
+                        متجر حزم التعدين
+                    </button>
+                    <button id="referral-button" class="secondary-button">
+                        <span class="icon">👥</span>
+                        دعوة الأصدقاء
+                    </button>
+                    <button id="tasks-button" class="secondary-button">
+                        <span class="icon">✅</span>
+                        المهام اليومية
+                    </button>
+                </div>
+
+                <div class="transactions">
+                    <h3>آخر المعاملات</h3>
+                    <div id="transactions-list" class="transactions-list">
+                        <!-- سيتم إضافة المعاملات هنا بواسطة JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Smart Coin &copy; 2025 - جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
